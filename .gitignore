@@ -98,4 +98,9 @@ ENV/
 /site
 
 # mypy
-.mypy_cache/
+
+# idea git-file
+.idea/
+
+# ds_store
+.DS_STORE/
