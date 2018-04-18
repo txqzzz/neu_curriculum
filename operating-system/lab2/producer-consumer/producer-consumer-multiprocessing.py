@@ -44,13 +44,11 @@ def consumer(name):
 # con = multiprocessing.Process(target=consumer, args=("consumer_program",))
 # con2 = threading.Thread(target=consumer, args=("sx",))
 
-
-
 def main():
     print("please input 'p'/'c' for producer process/consumer process")
     global count
     global buffer_queue
-    while(True):
+    while True:
         operation = input()
         # pro = multiprocessing.Process(target=producer, args=("producer_program",))
         # con = multiprocessing.Process(target=consumer, args=("consumer_program",))

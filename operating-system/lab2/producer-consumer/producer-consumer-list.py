@@ -17,10 +17,12 @@ if buffer is not full , just append, count+1
 if buffer is full , add p_count
 
 c:
-if buffer is not empty, just pop
+if buffer is not empty, 
+                        |===>   if buffer not full and p_count > 0 , p_count - 1, index+1
+                                elif pop, index-1
 if buffer is empty, 
-                  |====> if p_count > 0, p_count - 1 and pop buffer[0] buffer[0] = count
-                         if p_count = 0, add c_count
+                        |====>  if p_count > 0, p_count - 1 and pop buffer[0] buffer[0] = count, index+1
+                                if p_count = 0, add c_count
 
 """
 
@@ -33,7 +35,7 @@ def main():
     p_count = 0
     c_count = 0
     index = 1
-    while (True):
+    while True:
         operation = input()
         if operation == "p":
             if len(buffer_list) < buffer_max:
@@ -54,7 +56,7 @@ def main():
                     index = (index + 1) % buffer_max
                     count += 1
                 else:
-                    print("now consuming product %s\n   " % buffer_list[0])
+                    print("now consuming product %s\n" % buffer_list[0])
                     buffer_list.pop(0)
                     index = (index - 1) % buffer_max
             else:
