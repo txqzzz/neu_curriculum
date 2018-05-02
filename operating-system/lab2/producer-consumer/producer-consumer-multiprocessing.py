@@ -6,22 +6,22 @@
     @Project: neu_curriculum
 """
 import random
-import threading
 import multiprocessing
 import time
 
 import queue
 
 
-
 buffer_queue = queue.Queue(maxsize=8)
 count = 1
 buffer_list = []
+buffer_max = 8
+
 
 def producer(name):
     global count
     global buffer_queue
-    buffer_queue = queue.Queue(8)
+    buffer_queue = queue.Queue(buffer_max)
     while True:
         buffer_queue.put(count)  # 将值放入队列中 默认block为True，无数据时调用线程暂停，否则抛出异常
         buffer_list.append(count)
@@ -53,6 +53,7 @@ def main():
         # pro = multiprocessing.Process(target=producer, args=("producer_program",))
         # con = multiprocessing.Process(target=consumer, args=("consumer_program",))
         if operation == "p":
+            print(count)
             pro = multiprocessing.Process(target=producer, args=("producer_program",))
             pro.start()
             time.sleep(random.randint(1, 3))
